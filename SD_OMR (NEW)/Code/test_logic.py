@@ -1,3 +1,20 @@
+# <editor-fold desc="FILE DESCRIPTION">
+# DESCRIPTION :
+#       This file contains a logic to detect more than shaded bublble
+#
+#  PUBLIC FUNCTIONS :
+#       None
+#
+#  NOTES :
+#       None
+#
+#  AUTHOR :    B1499 JEREMY PUN
+#
+#  CHANGES :
+#       None
+#
+# </editor-fold>
+
 import numpy as np
 
 arr = np.array([41, 54, 43, 44, 52])

@@ -1,3 +1,19 @@
+# <editor-fold desc="FILE DESCRIPTION">
+# DESCRIPTION :
+#       This file contains all the function that will be called in main.py
+#
+#  PUBLIC FUNCTIONS :
+#       stackImages(), rectContours(), reorder(), splitBoxes(), getCornerPoints(), showAnswers()
+#
+#  NOTES :
+#       None
+#
+#  AUTHOR :    B1499 JEREMY PUN
+#
+#  CHANGES :
+#       None
+#
+# </editor-fold>
 import cv2
 import numpy as np
 
@@ -202,3 +218,14 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
 
     # cv2.imshow("Show Answers",img)
     return img
+
+
+#Added: To check for more than 1 shaded bubble
+# def check(_questionRow, val):
+#     # traverse in the list
+#     for x in list1:
+#         # compare with all the values
+#         # with val
+#         if val>= x:
+#             return False
+#     return True

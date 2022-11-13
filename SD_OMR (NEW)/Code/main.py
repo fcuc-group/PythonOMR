@@ -1,3 +1,20 @@
+# <editor-fold desc="FILE DESCRIPTION">
+# DESCRIPTION :
+#       This file serves as the entry point of the program where the execution begins
+#
+#  PUBLIC FUNCTIONS :
+#       None
+#
+#  NOTES :
+#       None
+#
+#  AUTHOR :    B1499 JEREMY PUN
+#
+#  CHANGES :
+#       None
+#
+# </editor-fold>
+
 # <editor-fold desc="LIBRARY">
 # 1. cv2       : Import cv2 library, computer vision AI
 # 2. numpy     : Import numpy library, enable AI to identify pixels as O and 1
@@ -123,7 +140,7 @@ try:
             myIndex.append(myIndexVal[0][0])
         # print(myIndex)
 
-        #####Continue from here####
+        #####Suggestion: Continue from here####
         # Driver code: To filter more than shaded region
         # for element in arr:
         #     # if the element is higher than 2000, set the value to True, otherwise False:
@@ -142,7 +159,7 @@ try:
         #         myIndexVal = np.where(arr == np.amax(arr))
         #         print(x,"Shaded:",myIndexVal[0])            #test for shaded bubbles
         #     myIndex.append(myIndexVal[0][0])
-        #####Continue from here####
+        #####Suggestion: Continue from here####
 
         # GRADING
         grading=[]
@@ -203,6 +220,7 @@ labels = [["Original","Gray","Blur","Blur"],
           ["Contours","Biggest Contours","Warp","Threshold"],
           ["Result","Raw","Inverse","Inverse Warp","Final"]
           ]
+
 imgStacked = utility.stackImages(imageArray, 0.4, labels)
 
 # cv2.imshow("Original",img)                            # Display original image to test the program
@@ -216,7 +234,7 @@ cv2.imshow("Stacked Images",imgStacked)
 #     cv2.waitKey(300)
 
 # # 8. DISPLAY FINAL IMAGE
-cv2.imshow("Final Image", imgFinal)                   # Display finalized image
+cv2.imshow("Final Image", imgFinal)                     # Display finalized image
 # cv2.imwrite("Test_Long_FinalResult.png", imgFinal)    # Save finalized image
 cv2.waitKey(0)
 # cv2.destroyAllWindows()
