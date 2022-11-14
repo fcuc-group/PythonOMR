@@ -29,7 +29,7 @@ import utility
     # • Adjust widthImg, height to improve clarity
 # </editor-fold>
 # path= "../Resources/OMR_Long_Short.png"
-path= "../Resources/OMR_Double.png"
+path= "../Resources/OMR_Blank.png"
 widthImg=400
 heightImg=1000
 
