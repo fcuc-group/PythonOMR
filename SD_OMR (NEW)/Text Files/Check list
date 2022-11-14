@@ -14,15 +14,19 @@
     3.7. Loop through all bubbles (Pass)
     3.8. Finding index values of the marking (Pass)
     3.9. Grading (Pass) // NEEDS MORE TESTING TO CONFIRM
-4. Display answers (FAIL) //UNABLE TO DETECT THE ADJACENT BUBBLE COLUMN IMAGE
-5. Display shaded answers (FAIL) //UNABLE TO DETECT THE ADJACENT BUBBLE COLUMN IMAGE
-6. Display answers (based on original image) (FAIL) //UNABLE TO DETECT THE RIGHT BUBBLE COLUMN IMAGE
-7. Display grades  (based on original image) (TBA)
+4. Display answers (Pass) //UNABLE TO DETECT THE ADJACENT BUBBLE COLUMN IMAGE
+5. Display shaded answers (Pass) //UNABLE TO DETECT THE ADJACENT BUBBLE COLUMN IMAGE
+6. Display answers (based on original image) (Pass) //UNABLE TO DETECT THE RIGHT BUBBLE COLUMN IMAGE
+7. Display grades  (based on original image) (Pass)
 8. Display an array of image
-    8.1. Define image array (TBA)  //MIGHT NOT DETECT THE RIGHT BUBBLE COLUMN IMAGE
-    8.2. Define label array (TBA)  //REQUIRES AN UPDATE
-    8.3. Print (Image Array+Label Array) (TBA) //MIGHT NOT DETECT THE RIGHT BUBBLE COLUMN IMAGE
-9. Display final image (TBA) //NOT YET MERGE ALL IMAGE TOGETHER
+    8.1. Define image array (Pass)  //MIGHT NOT DETECT THE RIGHT BUBBLE COLUMN IMAGE
+    8.2. Define label array (Pass)  //REQUIRES AN UPDATE
+    8.3. Print (Image Array+Label Array) (Pass) //MIGHT NOT DETECT THE RIGHT BUBBLE COLUMN IMAGE
+9. Display final image (Pass) //NOT YET MERGE ALL IMAGE TOGETHER
+
+//ADDITIONAL LOGIC
+1. Respond to blank OMR form
+2. Respond to more than 1 shaded bubble
 
 
 
