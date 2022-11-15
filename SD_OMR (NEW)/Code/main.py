@@ -28,20 +28,20 @@ import utility
 # 1. Guide     :
     # • Adjust widthImg, height to improve clarity
 # </editor-fold>
-# path= "../Resources/OMR_Long_Short.png"
-path= "../Resources/OMR_Blank.png"
+path= "../Resources/One/OMR_1.png"
+# path= "../Resources/OMR_Blank.png"
 widthImg=400
 heightImg=1000
 
 # <editor-fold desc="OMR QUESTION FORMAT">
 # 1. question  , The number of questions to detect
 # 2. choices   , The number of choices per question
-# 3. ans       , The answer sheet
+# 3. ans       , The test_case sheet
 # </editor-fold>
 questions=20
 choices=4
 # ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,2]
-ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,0]         #Test case: More than 1 answer
+ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,0]         #Test case: More(Double) than 1 test_case
 
 #ENABLE WEBCAM CAPTURE (21-09-2022)#
 # webcamFeed = True
@@ -165,7 +165,7 @@ try:
         grading=[]
         for x in range (0,questions):
             if ans[x]==myIndex[x]:
-                # 1 if answer is correct, 0 if answer is wrong
+                # 1 if test_case is correct, 0 if test_case is wrong
                 grading.append(1)
             else: grading.append(0)
         # print(grading)

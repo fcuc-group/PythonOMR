@@ -1,0 +1,35 @@
+Objective: To detect questions that have more than 1 shaded answer
+
+ans = [0,0,1,2,2,1,2,3,2,1,2,3,2,0,1,0,3,1,2,1]
+
+#Test case 1:
+    (OMR_Single_1.png): Pass/Fail
+    The program should,
+        -Detect Q20
+        -Reject Q20 by setting mark as 0
+
+#Test case 2:
+    (OMR_Single_2.png): Pass/Fail
+    The program should,
+        -Detect Q13
+        -Reject Q13 by setting mark as 0
+
+#Test case 3:
+    (OMR_Single_3.png): Pass/Fail
+    The program should,
+        -Detect Q15
+        -Reject Q15 by setting mark as 0
+
+#Test case 4:
+    (OMR_Single_4.png): Pass/Fail
+    The program should,
+        -Detect Q17
+        -Reject Q17 by setting mark as 0
+
+#Test case 5:
+    (OMR_Single_5.png): Pass/Fail
+    The program should,
+        -Detect Q10
+        -Reject Q10 by setting mark as 0
+
+

@@ -116,7 +116,7 @@ def reorder(myPoints):
 
 # <editor-fold desc="4. SPLIT BUBBLES VERTICALLY INSIDE OF ANSWER ZONE">
 # 1. Parameters     :
-    # • img    , answer zone image
+    # • img    , test_case zone image
 # 2. Return value:
     # • boxes , the bubbles for each question
 # </editor-fold>
@@ -136,7 +136,7 @@ def splitBoxes(img):
 
 # <editor-fold desc="5. GET CORNER POINTS OF A CONTOUR">
 # 1. Parameters     :
-    # • cont    , answer zone image
+    # • cont    , test_case zone image
 # 2. Return value:
     # • approx , the approximate value of a contour
 # </editor-fold>
@@ -147,10 +147,10 @@ def getCornerPoints(cont):
 
 # <editor-fold desc="6. DISPLAY ANSWERS">
 # 1. Parameters     :
-    # • img         , Bird's-eyes: Answer zone
-    # • myIndex     , The index of the pre-defined answer
+    # • img         , Bird's-eyes: test_case zone
+    # • myIndex     , The index of the pre-defined test_case
     # • grading     , The graded question
-    # • ans         , Pre-defined answer
+    # • ans         , Pre-defined test_case
     # • questions   , Number of questions
     # • choices     , Number of choices
 # 2. Return value:
@@ -159,7 +159,7 @@ def getCornerPoints(cont):
 # def showAnswers(img,myIndex,grading,ans,questions=5,choices=5): # (PRE-DEFINED DRIVER CODE)
 def showAnswers(img,myIndex,grading,ans,questions,choices):
 
-    # SIMULATE A 5*5 shape (based on answer zone)
+    # SIMULATE A 5*5 shape (based on test_case zone)
     sectWidth = int(img.shape[1]/questions)
     sectHeight = int(img.shape[0]/choices)
 
@@ -174,7 +174,7 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
 
         cY = ((x * sectHeight)//5)+30
 
-        if grading[x]==1:          # LOGIC: 1 correct answer, 0 wrong answer
+        if grading[x]==1:          # LOGIC: 1 correct test_case, 0 wrong test_case
             if myAns == 0:
                 cX = (myAns * sectWidth) + sectWidth // 2 + 50  # DEFAULT FORMAT
                 # cY = (x * sectWidth) +20
@@ -189,7 +189,7 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
                 # cY = (x * sectWidth)+150
 
             myColor = (0,255,0)     # GREEN
-            cv2.circle(img,(cX,cY),10,myColor,cv2.FILLED)  # Fill correct answer in GREEN
+            cv2.circle(img,(cX,cY),10,myColor,cv2.FILLED)  # Fill correct test_case in GREEN
 
         elif grading[x]==0:
             if myAns == 0:
@@ -202,7 +202,7 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
                 cX = (myAns * sectWidth) + sectWidth // 2 + 270   #DEFAULT FORMAT
 
             myColor = (123, 24, 24)  # BLUE
-            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct answer in BLUE
+            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct test_case in BLUE
 
             correctAns = ans[x]
             if correctAns== 0:
@@ -214,7 +214,7 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
             elif correctAns == 3:
                 cX = (correctAns* sectWidth) + sectWidth // 2 + 270  # DEFAULT FORMAT
             myColor = (0,255,0)     # GREEN
-            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct answer in GREEN
+            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct test_case in GREEN
 
     # cv2.imshow("Show Answers",img)
     return img
