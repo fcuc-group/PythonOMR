@@ -1,6 +1,6 @@
 # <editor-fold desc="FILE DESCRIPTION">
 # DESCRIPTION :
-#       This file contains all the function that will be called in main.py
+#       This file contains all the function that will be called in grader.py
 #
 #  PUBLIC FUNCTIONS :
 #       stackImages(), rectContours(), reorder(), splitBoxes(), getCornerPoints(), showAnswers()
@@ -18,7 +18,7 @@ import cv2
 import numpy as np
 
 # <editor-fold desc="USER-GUIDE">
-# 1. Description       : This file contains all the function that will be called in main.py
+# 1. Description       : This file contains all the function that will be called in grader.py
 # 2. List of functions : stackImages, rectContours, reorder, splitBoxes, getCornerPoints, showAnswers
 # </editor-fold>
 
