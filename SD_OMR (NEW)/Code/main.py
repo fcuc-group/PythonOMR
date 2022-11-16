@@ -12,12 +12,28 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 @app.route('/')
+def home():
+    return render_template('home.html')
+@app.route('/login')
+def login():
+    return render_template('login.html')
+@app.route('/grade')
+def grade():
+    return render_template('grade.html')
+@app.route('/search')
+def search():
+    return render_template('grade.html')
+@app.route('/subjects')
+def subjects():
+    return render_template('subjects.html')
+
+
+@app.route('/upload')
 def upload_form():
     return render_template('upload.html')
 
-@app.route('/', methods=['POST'])
+@app.route('/upload_image', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
         flash('No file part')
@@ -46,6 +62,8 @@ def upload_image():
         # </editor-fold>
         questions = 20
         choices = 4
+
+        # String to array for answer
         ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,2]
 
         # PREPROCESSING
@@ -174,10 +192,16 @@ def upload_image():
         cv2.imwrite("static/uploads/Graded_OMR.png", imgFinal)  # Save finalized image
         # cv2.waitKey(0)
 
-        return render_template('upload.html', filename="../static/uploads/Graded_OMR.png")
+        return render_template('grade.html', filename="../static/uploads/Graded_OMR.png")
     else:
         flash('Allowed image types are -> png, jpg, jpeg, gif')
         return redirect(request.url)
+        # //JSON object: imageurl,marks
+        #{
+         #   imgUrl:"XXX",
+          #  mark:XX
+        # }
+        # //No need to render
 
 @app.route('/display/<filename>')
 def display_image(filename):

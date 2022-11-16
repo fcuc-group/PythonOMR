@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Simple login form with side demo image using bootstrap</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css'>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base_style.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/nav_style.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/table_style.css') }}">
+</head>
+<nav class="nav nav-2">
+  <a class="nav-logo" href="#">FCUC OMR Grader</a>
+  <ul class="nav-list">
+      <li>
+      <a href="{{ url_for('home') }}">Home</a>
+    </li>
+    <li>
+      <a href="{{ url_for('grade') }}">Grade</a>
+    </li>
+    <li>
+      <a href="{{ url_for('search') }}">Search</a>
+    </li>
+    <li>
+      <a href="{{url_for('subjects')}}">Subjects</a>
+    </li>
+    <li>
+      <a href="{{url_for('login')}}">
+        <button class="nav-btn">Login</button>
+      </a>
+    </li>
+  </ul>
+</nav>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://use.fontawesome.com/f59bcd8580.js"></script>
+<div class="container">
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Results</th>
+        <th scope="col">Grade</th>
+        <th scope="col">View</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+<!--      {% for item in data %}-->
+      <tr>
+        <th scope="No">TEST</th>
+        <td data-title="No">TEST</td>
+        <td data-title="Student_Name">TEST</td>
+        <td data-title="Results">TEST</td>
+        <td data-title="Grade">TEST</td>
+        <form action="" autocomplete="on" method="POST">
+          <td data-title="Resume"><button id="resumeButton" type="submit" name="emp_id" value="" >view</button></td>
+        </form>
+        <form action="" autocomplete="on" method="POST">
+          <input type="hidden" name="overtime_hours" value= "{{ item[14] }}"/>
+          <td data-title="Edit Profile"><button id="deleteButton" type="submit"  name="emp_id" value="">reset</button></td>
+        </form>
+      </tr>
+<!--      {% endfor %}-->
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td colspan="7">Data is current as of March 31, 2021.</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Simple login form with side demo image using bootstrap</title>
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css'>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base_style.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/nav_style.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/grade_style.css') }}">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<nav class="nav nav-2">
+  <a class="nav-logo" href="#">FCUC OMR Grader</a>
+  <ul class="nav-list">
+      <li>
+      <a href="{{ url_for('home') }}">Home</a>
+    </li>
+    <li>
+      <a href="{{ url_for('grade') }}">Grade</a>
+    </li>
+    <li>
+      <a href="{{ url_for('search') }}">Search</a>
+    </li>
+    <li>
+      <a href="{{url_for('subjects')}}">Subjects</a>
+    </li>
+    <li>
+      <a href="{{url_for('login')}}">
+        <button class="nav-btn">Login</button>
+      </a>
+    </li>
+  </ul>
+</nav>
+<body>
+<p>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+         <script>swal("Image uploaded","OMR form successfully uploaded and graded!", "success");</script>
+<!--          <li>{{ message }}</li>-->
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</p>
+
+<form method="post" action="/upload_image" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
+
+{% if filename %}
+	<div>
+        <a id="graded_image_link"href="{{ url_for('display_image', filename=filename) }}" target="_blank">
+		    <img id="graded_image" src="{{ url_for('display_image', filename=filename) }}">
+        </a>
+    </div>
+{% endif %}
+<!-- partial -->
+  
+</body>
+</html>

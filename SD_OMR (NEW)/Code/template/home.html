@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Simple login form with side demo image using bootstrap</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css'>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base_style.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/nav_style.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/card_style.css') }}">
+</head>
+<nav class="nav nav-2">
+  <a class="nav-logo" href="#">FCUC OMR Grader</a>
+  <ul class="nav-list">
+    <li>
+      <a href="{{ url_for('home') }}">Home</a>
+    </li>
+    <li>
+      <a href="{{ url_for('grade') }}">Grade</a>
+    </li>
+    <li>
+      <a href="{{ url_for('search') }}">Search</a>
+    </li>
+    <li>
+      <a href="{{url_for('subjects')}}">Subjects</a>
+    </li>
+    <li>
+      <a href="{{url_for('login')}}">
+        <button class="nav-btn">Login</button>
+      </a>
+    </li>
+  </ul>
+</nav>
+<body>
+  <ul class="cards">
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image card__image--grade"></div>
+        <div class="card__content">
+          <div class="card__title">Grade</div>
+          <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
+          <button class="btn btn--block card__btn">Select</button>
+        </div>
+      </div>
+    </li>
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image card__image--search"></div>
+        <div class="card__content">
+          <div class="card__title">Search</div>
+          <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
+          <button class="btn btn--block card__btn">Select</button>
+        </div>
+      </div>
+    </li>
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image card__image--subjects"></div>
+        <div class="card__content">
+          <div class="card__title">Subjects</div>
+          <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative numbers are invalid.</p>
+          <button class="btn btn--block card__btn">Select</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</body>
+</html>
