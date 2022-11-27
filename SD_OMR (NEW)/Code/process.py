@@ -1,57 +1,26 @@
-import os
-from app import app
-import urllib.request
-from flask import Flask, flash, request, redirect, url_for, render_template
-from werkzeug.utils import secure_filename
 import cv2
 import numpy as np
+import time
 import utility
-# https://roytuts.com/upload-and-display-image-using-python-flask/
-
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-@app.route('/')
-def home():
-    return render_template('home.html')
-@app.route('/login')
-def login():
-    return render_template('login.html')
-@app.route('/grade')
-def grade():
-    return render_template('grade.html')
-@app.route('/search')
-def search():
-    return render_template('grade.html')
-@app.route('/subjects')
-def subjects():
-    return render_template('subjects.html')
-
-
-@app.route('/upload')
-def upload_form():
-    return render_template('upload.html')
-
-@app.route('/upload_image', methods=['POST'])
-def upload_image():
-    if 'file' not in request.files:
-        flash('No file part')
-        return redirect(request.url)
-    file = request.files['file']
-
-    if file.filename == '':
-        flash('No image selected for uploading')
-        return redirect(request.url)
-
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        # print('upload_image filename: ' + filename)
-        flash('Image successfully uploaded and displayed below')
-
-        path = "../Resources/One/OMR_1.png"
+def process(path,ans):
+    # if 'file' not in request.files:
+    #     flash('No file part')
+    #     return redirect(request.url)
+    # file = request.files['file']
+    #
+    # if file.filename == '':
+    #     flash('No image selected for uploading')
+    #     return redirect(request.url)
+    #
+    # if file and allowed_file(file.filename):
+    #     filename = secure_filename(file.filename)
+    #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    #     # print('upload_image filename: ' + filename)
+    #     flash('Image successfully uploaded and displayed below')
+    #
+    #     path = "../Resources/One/OMR_1.png"
         # path= "../Resources/OMR_Blank.png"
+    if(path == ""):
         widthImg = 400
         heightImg = 1000
 
@@ -64,7 +33,7 @@ def upload_image():
         choices = 4
 
         # String to array for answer
-        ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,2]
+        #ans = [0, 1, 2, 3, 2, 1, 0, 1, 2, 3, 2, 1, 0, 1, 2, 3, 2, 1, 0, 2]
 
         # PREPROCESSING
         img = cv2.imread(path)  # Retrieve image
@@ -189,25 +158,14 @@ def upload_image():
 
         # # 8. DISPLAY FINAL IMAGE
         # cv2.imshow("Final Image", imgFinal)  # Display finalized image
-        cv2.imwrite("static/uploads/Graded_OMR.png", imgFinal)  # Save finalized image
-        # cv2.waitKey(0)
 
-        return render_template('grade.html', filename="../static/uploads/Graded_OMR.png")
+        gradedOMRFileName = "static/uploads/Graded_OMR" + time.strftime("%Y/%m/%d-%H:%M:%S", time.localtime()) + ".png"
+        cv2.imwrite(gradedOMRFileName, imgFinal)  # Save finalized image
+        # cv2.waitKey(0)
+        return {"gradedOMRFileName": gradedOMRFileName,
+                "score": score}
+       # return render_template('grade.html', filename="../static/uploads/Graded_OMR.png")
     else:
-        flash('Allowed image types are -> png, jpg, jpeg, gif')
-        return redirect(request.url)
-        # //JSON object: imageurl,marks
-        #{
-         #   imgUrl:"XXX",
-          #  mark:XX
-        # }
-        # //No need to render
-#
-# @app.route('/display/<filename>')
-# def display_image(filename):
-#     # print('display_image filename: ' + filename)
-#     return redirect(url_for('static', filename='uploads/' + filename), code=301)
-#
-#
-# if __name__=="__main__":
-#     app.run(debug=True)
+        #flash('Allowed image types are -> png, jpg, jpeg, gif')
+       #return redirect(request.url)
+       return None
