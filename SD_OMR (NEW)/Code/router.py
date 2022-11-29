@@ -18,6 +18,7 @@ def upload_image():
 
     return {"success":statue,
             "gradedFile":graded.gradedOMRFileName,
+            "processNameFile":"",
             "score":graded.score,
             "studentName":"",
             "studentId":"",
