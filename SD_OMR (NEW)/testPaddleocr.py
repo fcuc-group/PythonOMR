@@ -1,8 +1,9 @@
 from paddleocr import PaddleOCR, draw_ocr
-
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 # Paddleocr目前支持的多语言语种可以通过修改lang参数进行切换
 # 例如`ch`, `en`, `fr`, `german`, `korean`, `japan`
-ocr = PaddleOCR(use_angle_cls=True, lang="en")  # need to run only once to download and load model into memory
+ocr = PaddleOCR(lang="en")  # need to run only once to download and load model into memory
 img_path = './Code/OMR_Double_1.png'
 result = ocr.ocr(img_path, cls=True)
 for idx in range(len(result)):
