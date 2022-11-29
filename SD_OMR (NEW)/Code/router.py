@@ -14,10 +14,10 @@ def upload_image():
 
     print(request.json)
     data = request.json
-    # graded = process.process(data.url, data.answer)
-    # statue = False
-    # if(graded != None):
-    #     statue = True
+    graded = process.process(data.url, data.answer)
+    statue = False
+    if(graded != None):
+        statue = True
 
         #prcoess name
 
