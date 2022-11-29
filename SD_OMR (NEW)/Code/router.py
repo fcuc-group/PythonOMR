@@ -1,6 +1,8 @@
 from flask import Flask, flash, request, redirect, url_for, render_template
 import process
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello():
@@ -16,9 +18,9 @@ def upload_image():
     if(graded != None):
         statue = True
 
-        ##prcoess name
+        #prcoess name
 
-        # process qr
+        #process qr
 
     return {"success":statue,
             "gradedFile":graded.gradedOMRFileName,
