@@ -16,6 +16,10 @@ def upload_image():
     if(graded != None):
         statue = True
 
+        ##prcoess name
+
+        # process qr
+
     return {"success":statue,
             "gradedFile":graded.gradedOMRFileName,
             "processNameFile":"",
