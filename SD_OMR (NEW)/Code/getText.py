@@ -9,10 +9,10 @@ def getText(imgPath):
     os.environ['KMP_DUPLICATE_LIB_OK']='True'
     ocr = PaddleOCR(lang='en')  # need to run only once to download and load model into memory
     result = ocr.ocr(imgPath, cls=True)
-    for idx in range(len(result)):
-        res = result[idx]
-        for line in res:
-            print(line)
+    # for idx in range(len(result)):
+    #     res = result[idx]
+    #     for line in res:
+    #         print(line)
 
     result = result[0]
     image = Image.open(imgPath).convert('RGB')
@@ -28,7 +28,8 @@ def getText(imgPath):
         "studentName": "",
         "studentId": "",
         "studentSubject": "",
-        "studentCourse":""
+        "studentCourse":"",
+        "textImg": fileName
     }
 
     for txt in txts:
@@ -40,28 +41,26 @@ def getText(imgPath):
             if(re.match(pattern,txts[txts.index(txt)+1], flags=0) != None):
                 student["studentId"] = txts[txts.index(txt) + 1]
             else:
-                if (re.match(pattern,txts[txts.index(txt)-1], flags=0) != None):
-                 student["studentId"] = txts[txts.index(txt) -1]
-                else:
-                    student["studentId"] = ""
+                student["studentId"] = ""
 
         #check if txt equals 'Student Name:'
         if txt == 'Name:':
             # pattern = check is name
-            pattern = re.compile(r'[A-Z]\w+')
-            if(re.match(pattern,txts[txts.index(txt)-1], flags=0) != None):
-                student["studentName"] = txts[txts.index(txt) - 1]
-            else:
-                if (re.match(pattern,txts[txts.index(txt)+1], flags=0) != None):
-                 student["studentName"] = txts[txts.index(txt) +1]
-                else:
-                    student["studentName"] = ""
+            student["studentName"] = txts[txts.index(txt)+1]
 
+        #check if txt equals 'Subject:'
+        if txt == 'Subject:':
+            # pattern = check is subject
+            student["studentSubject"] = txts[txts.index(txt)+1]
 
+        #check if txt equals 'Course:'
+        if txt == 'Course:':
+            # pattern = check is course
+            student["studentCourse"] = txts[txts.index(txt)+1]
 
         print(txt)
 
-    return result
+    return student
 
 
 

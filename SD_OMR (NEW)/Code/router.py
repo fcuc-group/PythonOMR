@@ -44,7 +44,7 @@ def upload_image():
 
     #answerList = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 
-    getText.getText(data['url'])
+    student = getText.getText(data['url'])
 
 
     graded = process.process(data['url'], answerList)
@@ -53,21 +53,21 @@ def upload_image():
 
 
 
-    # if(graded != None):
-    #     statue = True
+    if(graded != None):
+        statue = True
 
         #prcoess name
 
         #process qr
 
-    return {"success":True,
+    return {"success":statue,
             "gradedFile":graded['gradedOMRFileName'],
-            "processNameFile":"",
+            "processNameFile":student['textImg'],
             "score":graded['score'] ,
-            "studentName":"",
-            "studentId":"",
-            "subject":subjectId,
-            "course":""}
+            "studentName":student['studentName'],
+            "studentId":student['studentId'],
+            "subject":student['studentSubject'],
+            "course":student['studentCourse']}
 
 
 @app.route('/answerSheet', methods=['POST'])
