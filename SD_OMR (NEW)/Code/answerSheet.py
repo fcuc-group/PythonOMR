@@ -86,7 +86,7 @@ def createPDF(subjectId,studentName,studentId,answerlist):
 
 
     #answerSheetFileName = "./static/uploads/answerSheet/pdf/" + time.strftime("%Y%m%d-%H%M%S", time.localtime())
-    answerSheetFileName = time.strftime("%Y%m%d-%H%M%S", time.localtime())
+    answerSheetFileName = "answerSheet/"+time.strftime("%Y%m%d-%H%M%S", time.localtime())
     pdf.output(answerSheetFileName+ ".pdf")
     pdf.close()
 
