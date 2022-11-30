@@ -3,7 +3,7 @@ from qrcode import QRCode
 from pdf2image import convert_from_path
 import time
 
-def createPDF(subjectId,studentName,studentId):
+def createPDF(subjectId,studentName,studentId,answerlist):
     pdf = FPDF(orientation='P', unit='mm', format='A4')
     pdf.add_page()
 
@@ -12,7 +12,7 @@ def createPDF(subjectId,studentName,studentId):
 
     #create qr code
     qr = QRCode()
-    qr.add_data(subjectId+','+studentName+','+studentId) # set qr data
+    qr.add_data(subjectId+';'+studentName+';'+studentId+';'+answerlist) # set qr data
     img = qr.make_image() # create img
     img.save('qrcode.png') # save it
 
