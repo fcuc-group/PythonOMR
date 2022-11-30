@@ -26,7 +26,7 @@ def createPDF(subjectId,studentName,studentId,answerlist):
 
     #create answer frame
     pdf.set_line_width(1)
-    pdf.rect(20, 70, 55, 210)
+    pdf.rect(20, 70, 55, 211)
 
     #set answer number text
     pdf.set_font("Arial","B", size=15)
@@ -36,7 +36,7 @@ def createPDF(subjectId,studentName,studentId,answerlist):
     #create question number
     pdf.set_line_width(0.5)
     for i in range(20):
-        y = 10
+        y = 10.4
         y *= i
 
         pdf.rect(10, 73+y, 8, 8)
@@ -63,7 +63,7 @@ def createPDF(subjectId,studentName,studentId,answerlist):
         y = 11
         y *= i
         pdf.text(95, 125 + y, txt=textList[i])
-        pdf.dashed_line(130, 125 + y, 190, 125 + y, 1, 2)
+        pdf.dashed_line(130, 128 + y, 190, 128 + y, 1, 2)
 
 
     # "Honor Pledge for Exams"

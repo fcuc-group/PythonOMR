@@ -4,6 +4,7 @@ import answerSheet
 from flask_cors import CORS
 from pyzbar.pyzbar import decode
 from PIL import Image
+import getText
 app = Flask(__name__)
 CORS(app)
 
@@ -30,6 +31,10 @@ def upload_image():
     studentName = studentDetails[1]
     studentId = studentDetails[2]
     answerList = studentDetails[3].split(',')
+    #for lop to convert string to int
+    for i in range(len(answerList)):
+        answerList[i] = int(answerList[i])
+
     print(studentDetails)
 
     print(subjectId)
@@ -37,9 +42,13 @@ def upload_image():
     print(studentId)
     print(answerList)
 
+    #answerList = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+
+    getText.getText(data['url'])
 
 
-    #graded = process.process(data.url, answerList)
+    graded = process.process(data['url'], answerList)
+    print(graded)
     statue = False
 
 
@@ -52,12 +61,12 @@ def upload_image():
         #process qr
 
     return {"success":True,
-            "gradedFile":"c:///.png",
+            "gradedFile":graded['gradedOMRFileName'],
             "processNameFile":"",
-            "score":30,
+            "score":graded['score'] ,
             "studentName":"",
             "studentId":"",
-            "subject":"",
+            "subject":subjectId,
             "course":""}
 
 

@@ -3,6 +3,9 @@ import numpy as np
 import time
 import utility
 def process(path,ans):
+    print("Processing...")
+    print(path)
+    print(ans)
     # if 'file' not in request.files:
     #     flash('No file part')
     #     return redirect(request.url)
@@ -20,7 +23,7 @@ def process(path,ans):
     #
     #     path = "../Resources/One/OMR_1.png"
         # path= "../Resources/OMR_Blank.png"
-    if(path == ""):
+    if(path != ""):
         widthImg = 400
         heightImg = 1000
 
@@ -159,8 +162,11 @@ def process(path,ans):
         # # 8. DISPLAY FINAL IMAGE
         # cv2.imshow("Final Image", imgFinal)  # Display finalized image
 
-        gradedOMRFileName = "static/uploads/Graded_OMR" + time.strftime("%Y/%m/%d-%H:%M:%S", time.localtime()) + ".png"
+        #gradedOMRFileName = "static/uploads/Graded_OMR" + time.strftime("%Y/%m/%d-%H:%M:%S", time.localtime()) + ".png"
+        #gradedOMRFileName = "./static/graded/Graded_" + time.strftime("%Y/%m/%d-%H:%M:%S", time.localtime()) + ".png"
+        gradedOMRFileName = "Graded_OMR"+time.strftime("%Y%m%d-%H%M%S", time.localtime()) + ".png"
         cv2.imwrite(gradedOMRFileName, imgFinal)  # Save finalized image
+        print("Graded OMR saved as: ", gradedOMRFileName)
         # cv2.waitKey(0)
         return {"gradedOMRFileName": gradedOMRFileName,
                 "score": score}
