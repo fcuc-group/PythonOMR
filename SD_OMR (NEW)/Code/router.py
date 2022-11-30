@@ -37,6 +37,8 @@ def upload_image():
     print(studentId)
     print(answerList)
 
+
+
     #graded = process.process(data.url, answerList)
     statue = False
 
