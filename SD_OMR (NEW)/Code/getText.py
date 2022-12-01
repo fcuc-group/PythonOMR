@@ -21,7 +21,7 @@ def getText(imgPath):
     scores = [line[1][1] for line in result]
     im_show = draw_ocr(image, boxes, txts, scores, font_path='../doc/fonts/simfang.ttf')
     im_show = Image.fromarray(im_show)
-    fileName = 'result_'+time.strftime("%Y%m%d-%H%M%S", time.localtime())+'.jpg'
+    fileName = 'result/result_'+time.strftime("%Y%m%d-%H%M%S", time.localtime())+'.jpg'
     im_show.save(fileName)
 
     student = {
