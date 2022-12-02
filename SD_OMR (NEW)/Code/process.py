@@ -164,11 +164,12 @@ def process(path,ans):
 
         #gradedOMRFileName = "static/uploads/Graded_OMR" + time.strftime("%Y/%m/%d-%H:%M:%S", time.localtime()) + ".png"
         #gradedOMRFileName = "./static/graded/Graded_" + time.strftime("%Y/%m/%d-%H:%M:%S", time.localtime()) + ".png"
-        gradedOMRFileName = "graded/Graded_OMR"+time.strftime("%Y%m%d-%H%M%S", time.localtime()) + ".png"
+        fileName = "Graded_OMR"+time.strftime("%Y%m%d-%H%M%S", time.localtime()) + ".png"
+        gradedOMRFileName = "graded/"+fileName
         cv2.imwrite(gradedOMRFileName, imgFinal)  # Save finalized image
         print("Graded OMR saved as: ", gradedOMRFileName)
         # cv2.waitKey(0)
-        return {"gradedOMRFileName": gradedOMRFileName,
+        return {"gradedOMRFileName": fileName,
                 "score": score}
        # return render_template('grade.html', filename="../static/uploads/Graded_OMR.png")
     else:
