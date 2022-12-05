@@ -80,6 +80,12 @@ def create_answerSheet():
     return path
 
 
+@app.route('/editScore', methods=['PUT'])
+def edit_score():
+    print(request.json)
+    
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
