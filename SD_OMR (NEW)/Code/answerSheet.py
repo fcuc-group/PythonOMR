@@ -2,6 +2,9 @@ from fpdf import FPDF
 from qrcode import QRCode
 from pdf2image import convert_from_path
 import time
+from pathlib import Path
+import shutil
+import os
 
 def createPDF(subjectId,studentName,studentId,answerlist):
     pdf = FPDF(orientation='P', unit='mm', format='A4')
@@ -85,14 +88,26 @@ def createPDF(subjectId,studentName,studentId,answerlist):
         pdf.dashed_line(130, 240 + y, 190, 240 + y, 1, 2)
 
 
+
+    # moving the file to xampp/marked
+
+
     #answerSheetFileName = "./static/uploads/answerSheet/pdf/" + time.strftime("%Y%m%d-%H%M%S", time.localtime())
-    answerSheetFileName = "answerSheet/"+time.strftime("%Y%m%d-%H%M%S", time.localtime())
+    answerSheetFileName = time.strftime("%Y%m%d-%H%M%S", time.localtime())
     pdf.output(answerSheetFileName+ ".pdf")
     pdf.close()
+
+
 
 
     images = convert_from_path(answerSheetFileName+ ".pdf", 100)
     for image in images:
         image.save(answerSheetFileName+'.png')
+
+        marked_dir = Path(r"C:\xampp\htdocs\answerSheet")
+
+        shutil.move(answerSheetFileName, marked_dir / Path(answerSheetFileName+'.png').name)
+
+        print(f"{os.path.exists(marked_dir / Path(answerSheetFileName+'.png').name) = }")
 
     return answerSheetFileName+'.png'
