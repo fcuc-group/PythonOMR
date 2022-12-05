@@ -1,7 +1,5 @@
 from flask import Flask, flash, request, redirect, url_for, render_template
-import process
 import grade
-import editScore
 import answerSheet
 from flask_cors import CORS
 from pyzbar.pyzbar import decode
@@ -51,7 +49,6 @@ def upload_image():
     graded = grade.grade(data['url'], answerList)
     print(graded)
     statue = False
-
 
 
     if(graded != None):
