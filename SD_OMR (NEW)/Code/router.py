@@ -38,7 +38,6 @@ def upload_image():
         answerList[i] = int(answerList[i])
 
     print(studentDetails)
-
     print(subjectId)
     print(studentName)
     print(studentId)
@@ -62,6 +61,8 @@ def upload_image():
 
         #process qr
     path = "E:/FCUC/PythonOMR/SD_OMR (NEW)/Code/"
+
+
     return {"success":statue,
             "gradedFile":path+graded['gradedOMRFileName'],
             "processNameFile":path+student['textImg'],
@@ -83,7 +84,7 @@ def create_answerSheet():
 @app.route('/editScore', methods=['PUT'])
 def edit_score():
     print(request.json)
-    
+
 
 
 if __name__ == "__main__":
