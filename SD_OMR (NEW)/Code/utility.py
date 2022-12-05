@@ -166,30 +166,20 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
     for x in range(0,questions):
         myAns = myIndex[x]
 
-        # c = center of position
-        # cX = (myAns * sectWidth) + sectWidth #DEFAULT FORMAT
-        # cY = (x * sectHeight) + sectHeight // 2 #DEFAULT FORMAT
-        # print("cX=",cX," cY=",cY) #CHECK VALUES
-        # print("Grading=",grading[x]) #CHECK VALUES
-
         cY = ((x * sectHeight)//5)+30
 
         if grading[x]==1:          # LOGIC: 1 correct test_case, 0 wrong test_case
             if myAns == 0:
                 cX = (myAns * sectWidth) + sectWidth // 2 + 50  # DEFAULT FORMAT
-                # cY = (x * sectWidth) +20
             elif myAns == 1:
                 cX = (myAns * sectWidth) + sectWidth // 2 + 120  # DEFAULT FORMAT
-                # cY = (x * sectWidth)+50
             elif myAns == 2:
                 cX = (myAns * sectWidth) + sectWidth // 2 + 200  # DEFAULT FORMAT
-                # cY = (x * sectWidth)+100
             elif myAns == 3:
                 cX = (myAns * sectWidth) + sectWidth // 2 + 270  # DEFAULT FORMAT
-                # cY = (x * sectWidth)+150
 
-            myColor = (0,255,0)     # GREEN
-            cv2.circle(img,(cX,cY),10,myColor,cv2.FILLED)  # Fill correct test_case in GREEN
+            myColor = (0,255,0)     # LIME
+            cv2.circle(img,(cX,cY),10,myColor,cv2.FILLED)  # Fill correct test_case in LIME
 
         elif grading[x]==0:
             if myAns == 0:
@@ -200,9 +190,9 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
                 cX = (myAns * sectWidth) + sectWidth // 2 + 200   #DEFAULT FORMAT
             elif myAns == 3:
                 cX = (myAns * sectWidth) + sectWidth // 2 + 270   #DEFAULT FORMAT
+            myColor = (0, 0, 139)  # DARK RED
 
-            myColor = (123, 24, 24)  # BLUE
-            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct test_case in BLUE
+            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill shaded answer in DARK RED
 
             correctAns = ans[x]
             if correctAns== 0:
@@ -213,19 +203,32 @@ def showAnswers(img,myIndex,grading,ans,questions,choices):
                 cX = (correctAns* sectWidth) + sectWidth // 2 + 200  # DEFAULT FORMAT
             elif correctAns == 3:
                 cX = (correctAns* sectWidth) + sectWidth // 2 + 270  # DEFAULT FORMAT
-            myColor = (0,255,0)     # GREEN
-            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct test_case in GREEN
+            myColor = (0,255,0)     # LIME
+            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct answer in LIME
 
+        # Not shaded
+        elif grading[x]==5:
+            correctAns = ans[x]
+            if correctAns == 0:
+                cX = (correctAns * sectWidth) + sectWidth // 2 + 50  # DEFAULT FORMAT
+            elif correctAns == 1:
+                cX = (correctAns * sectWidth) + sectWidth // 2 + 120  # DEFAULT FORMAT
+            elif correctAns == 2:
+                cX = (correctAns * sectWidth) + sectWidth // 2 + 200  # DEFAULT FORMAT
+            elif correctAns == 3:
+                cX = (correctAns * sectWidth) + sectWidth // 2 + 270  # DEFAULT FORMAT
+            myColor = (203, 192, 255)  # PINK
+            cv2.circle(img, (cX, cY), 10, myColor, cv2.FILLED)  # Fill correct test_case in PINK
+
+        elif grading[x]==4:
+            c0 = (0* sectWidth) + sectWidth // 2 + 50  # DEFAULT FORMAT
+            c1 = (1 * sectWidth) + sectWidth // 2 + 120  # DEFAULT FORMAT
+            c2 = (2 * sectWidth) + sectWidth // 2 + 200  # DEFAULT FORMAT
+            c3 = (3* sectWidth) + sectWidth // 2 + 270  # DEFAULT FORMAT
+            myColor = (123, 24, 24)  # BLUE
+            cv2.circle(img, (c0, cY), 10, myColor, cv2.FILLED)
+            cv2.circle(img, (c1, cY), 10, myColor, cv2.FILLED)
+            cv2.circle(img, (c2, cY), 10, myColor, cv2.FILLED)
+            cv2.circle(img, (c3, cY), 10, myColor, cv2.FILLED)  # Fill correct test_case in RED
     # cv2.imshow("Show Answers",img)
     return img
-
-
-#Added: To check for more than 1 shaded bubble
-# def check(_questionRow, val):
-#     # traverse in the list
-#     for x in list1:
-#         # compare with all the values
-#         # with val
-#         if val>= x:
-#             return False
-#     return True
