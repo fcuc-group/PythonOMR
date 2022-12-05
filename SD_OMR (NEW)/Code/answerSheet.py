@@ -88,26 +88,23 @@ def createPDF(subjectId,studentName,studentId,answerlist):
         pdf.dashed_line(130, 240 + y, 190, 240 + y, 1, 2)
 
 
-
-    # moving the file to xampp/marked
-
-
     #answerSheetFileName = "./static/uploads/answerSheet/pdf/" + time.strftime("%Y%m%d-%H%M%S", time.localtime())
-    answerSheetFileName = time.strftime("%Y%m%d-%H%M%S", time.localtime())
+    answerSheetFileName = "answerSheet/"+time.strftime("%Y%m%d-%H%M%S", time.localtime())
     pdf.output(answerSheetFileName+ ".pdf")
     pdf.close()
 
-
+    pngFileName = answerSheetFileName + ".png"
 
 
     images = convert_from_path(answerSheetFileName+ ".pdf", 100)
     for image in images:
-        image.save(answerSheetFileName+'.png')
+        image.save(pngFileName)
 
-        marked_dir = Path(r"C:\xampp\htdocs\answerSheet")
+    existsPath = os.path.exists("D:\\xampp\\htdocs\\answerSheet")
+    print("existsPath: ", existsPath)
+    if(existsPath == False):
+        os.mkdir("D:\\xampp\\htdocs\\result")
+    shutil.copyfile(pngFileName, "D:\\xampp\\htdocs\\answerSheet\\"+pngFileName)
+    os.remove(answerSheetFileName+ ".pdf")
 
-        shutil.move(answerSheetFileName, marked_dir / Path(answerSheetFileName+'.png').name)
-
-        print(f"{os.path.exists(marked_dir / Path(answerSheetFileName+'.png').name) = }")
-
-    return answerSheetFileName+'.png'
+    return pngFileName

@@ -1,9 +1,10 @@
 from paddleocr import PaddleOCR, draw_ocr
-import os
 # 显示结果
 from PIL import Image
 import time
 import re
+import shutil
+import os
 
 def getText(imgPath):
     os.environ['KMP_DUPLICATE_LIB_OK']='True'
@@ -26,6 +27,13 @@ def getText(imgPath):
     fileName = 'result_'+time.strftime("%Y%m%d-%H%M%S", time.localtime())+'.jpg'
     resultFileName = 'result/'+fileName
     im_show.save(resultFileName)
+
+    #copy file , check dir first , if not exists , create it then copyfile
+    existsPath = os.path.exists("D:\\xampp\\htdocs\\result")
+    print("existsPath: ", existsPath)
+    if(existsPath == False):
+        os.mkdir("D:\\xampp\\htdocs\\result")
+    shutil.copyfile(resultFileName, "D:\\xampp\\htdocs\\result\\"+fileName)
 
     student = {
         "studentName": "",

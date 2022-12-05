@@ -24,6 +24,8 @@ import cv2
 import numpy as np
 import utility
 import time
+import shutil
+import os
 
 # <editor-fold desc="IMAGE FORMAT">
 # 1. Guide     :
@@ -262,5 +264,14 @@ def grade(path,ans):
    # cv2.imshow("Final Image", imgFinal)                     # Display finalized image
     cv2.imwrite(gradedOMRFileName, imgFinal)                 # Save finalized image
     cv2.waitKey(0)
+
+    # check have dir or not, if not create it, if yes, do nothing, just copy file to it
+    existsPath = os.path.exists("D:\\xampp\\htdocs\\graded")
+    print("existsPath: ", existsPath)
+    if(existsPath == False):
+        os.mkdir("D:\\xampp\\htdocs\\graded")
+    shutil.copyfile(gradedOMRFileName, "D:\\xampp\\htdocs\\graded\\"+fileName)
+
+
     return {"gradedOMRFileName": fileName, "score": score}
 
