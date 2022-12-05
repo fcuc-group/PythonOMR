@@ -51,7 +51,7 @@ def editScore(path):
     # </editor-fold>
     questions=20
     choices=4
-    ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,0]        #Test case: More(Double) than 1 test_case
+    ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,0]        #Test omr: More(Double) than 1 test_case
 
     # PREPROCESSING
     img=cv2.imread(path)                                   # Retrieve image

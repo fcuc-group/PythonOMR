@@ -1,6 +1,23 @@
 from PIL import Image
 
-im = Image.open("Blur.png")
+
+# - Blur.png
+# - BlurAndSmall.png
+# - Graded_OMR.png
+# - MixBlur_Half.png
+# - MixBlur_Half_2.png
+# - MixSymbol.png
+# - MixSymbol2.png
+
+testImg = "MixSymbol2.png"
+
+im = Image.open(testImg)
 x, y = im.size
 
 qrcode = Image.open("qrcode.png")
+qrcode = qrcode.resize((250, 250))
+image = Image.new("RGB", (x, y), (255, 255, 255))
+image.paste(im, (0, 0))
+image.paste(qrcode, (1200, 70))
+
+image.save("omr/"+testImg)
