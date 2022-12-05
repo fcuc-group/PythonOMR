@@ -41,7 +41,7 @@ import time
 # path= "../Resources/MixSymbol.png"
 # path= "../Resources/MixSymbol2.png"
 
-def grade(path):
+def grade(path,ans):
     widthImg=400
     heightImg=1000
 
@@ -53,7 +53,7 @@ def grade(path):
     questions=20
     choices=4
     # ans = [0,1,2,3,2,1,0,1,2,3,2,1,0,1,2,3,2,1,0,0]         #Test case: More(Double) than 1 test_case
-    ans = [0,0,1,2,2,1,2,3,2,1,2,3,2,0,1,0,3,1,2,1]         #Test case: More(Double) than 1 test_case
+    #ans = [0,0,1,2,2,1,2,3,2,1,2,3,2,0,1,0,3,1,2,1]         #Test case: More(Double) than 1 test_case
 
     # PREPROCESSING
     img=cv2.imread(path)                                   # Retrieve image
@@ -249,18 +249,18 @@ def grade(path):
               ["Result","Raw","Inverse","Inverse Warp","Final"]
               ]
 
-    imgStacked = utility.stackImages(imageArray, 0.4, labels)
+   # imgStacked = utility.stackImages(imageArray, 0.4, labels)
 
-    cv2.namedWindow("Stacked Images", cv2.WINDOW_NORMAL)    # Enables a resizable window
-    cv2.imshow("Stacked Images",imgStacked)
+    # cv2.namedWindow("Stacked Images", cv2.WINDOW_NORMAL)    # Enables a resizable window
+    # cv2.imshow("Stacked Images",imgStacked)
 
 
     # # 8. DISPLAY FINAL IMAGE
     # cv2.namedWindows("Final Image",cv2.WINDOW_NORMAL)
     fileName = "Graded_OMR" + time.strftime("%Y%m%d-%H%M%S", time.localtime()) + ".png"
     gradedOMRFileName = "graded/" + fileName
-    cv2.imshow("Final Image", imgFinal)                     # Display finalized image
+   # cv2.imshow("Final Image", imgFinal)                     # Display finalized image
     cv2.imwrite(gradedOMRFileName, imgFinal)                 # Save finalized image
     cv2.waitKey(0)
-    return fileName
+    return {"gradedOMRFileName": fileName, "score": score}
 

@@ -60,12 +60,12 @@ def upload_image():
         #prcoess name
 
         #process qr
-    path = "E:/FCUC/PythonOMR/SD_OMR (NEW)/Code/"
+    # path = "E:/FCUC/PythonOMR/SD_OMR (NEW)/Code/"
 
 
     return {"success":statue,
-            "gradedFile":path+graded['gradedOMRFileName'],
-            "processNameFile":path+student['textImg'],
+            "gradedFile":graded['gradedOMRFileName'],
+            "processNameFile":student['textImg'],
             "score":graded['score'],
             "studentName":student['studentName'],
             "studentId":student['studentId'],
