@@ -8,8 +8,10 @@ from PIL import Image
 # - MixBlur_Half_2.png
 # - MixSymbol.png
 # - MixSymbol2.png
+# - All.png
+# - all_2.png
 
-testImg = "MixSymbol2.png"
+testImg = "All.png"
 
 im = Image.open(testImg)
 x, y = im.size
@@ -20,4 +22,5 @@ image = Image.new("RGB", (x, y), (255, 255, 255))
 image.paste(im, (0, 0))
 image.paste(qrcode, (1200, 70))
 
-image.save("omr/"+testImg)
+image.show()
+# image.save("omr/"+testImg)
