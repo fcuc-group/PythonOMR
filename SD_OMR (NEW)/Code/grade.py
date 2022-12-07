@@ -209,7 +209,7 @@ def grade(path,ans):
             cv2.putText(imgRawGrade,str(int(score))+"%",(80,80),cv2.LINE_AA,3,(0, 165, 255),3)
 
             #ALERT MESSAGE
-            if 4 and 5 in grading:
+            if 4 in grading and 5 in grading:
                 cv2.putText(imgRawGrade,"Alert: Duplicate shade",(30,110),cv2.LINE_AA,0.5,(255,255,255),1)
                 cv2.putText(imgRawGrade,"Alert: Unshaded bubble",(30,135),cv2.LINE_AA,0.5,(255,255,255),1)
             elif 4 in grading:
