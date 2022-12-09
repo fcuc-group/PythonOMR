@@ -35,11 +35,7 @@ def upload_image():
     for i in range(len(answerList)):
         answerList[i] = int(answerList[i])
 
-    print(studentDetails)
-    print(subjectId)
-    print(studentName)
-    print(studentId)
-    print(answerList)
+    #check subjectId is ""
 
     #answerList = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 
@@ -64,9 +60,9 @@ def upload_image():
             "gradedFile":graded['gradedOMRFileName'],
             "processNameFile":student['textImg'],
             "score":graded['score'],
-            "studentName":student['studentName'],
-            "studentId":student['studentId'],
-            "subject":student['studentSubject'],
+            "studentName":studentName if studentName == "" else student['studentName'],
+            "studentId": studentId if studentId == "" else student['studentId'],
+            "subject":subjectId if subjectId == "" else student['studentSubject'],
             "course":student['studentCourse']}
 
 
