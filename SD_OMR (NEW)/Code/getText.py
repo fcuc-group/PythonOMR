@@ -47,17 +47,19 @@ def getText(imgPath):
         #check if txt equals 'Student Id:'
         if txt == 'Student Id:':
             # pattern = first is letter, then 4 digits
-            pattern = re.compile(r'[A-Z]\d{4}')
+            student["studentId"] = txts[txts.index(txt) + 1] +  txts[txts.index(txt) - 1]
 
-            if(re.match(pattern,txts[txts.index(txt)+1], flags=0) != None):
-                student["studentId"] = txts[txts.index(txt) + 1]
-            else:
-                student["studentId"] = ""
+            #pattern = re.compile(r'[A-Z]\d{4}')
+
+            # if(re.match(pattern,txts[txts.index(txt)+1], flags=0) != None):
+            #     student["studentId"] = txts[txts.index(txt) + 1]
+            # else:
+            #     student["studentId"] = ""
 
         #check if txt equals 'Student Name:'
         if txt == 'Name:':
             # pattern = check is name
-            student["studentName"] = txts[txts.index(txt)+1]
+            student["studentName"] = txts[txts.index(txt)+1] + txts[txts.index(txt)-1]
 
         #check if txt equals 'Subject:'
         if txt == 'Subject:':
