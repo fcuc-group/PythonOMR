@@ -6,7 +6,7 @@ from pathlib import Path
 import shutil
 import os
 
-def createPDF(subjectId,studentName,studentId,answerlist):
+def createPDF(subjectId,studentName,studentId,answerlist,date):
     pdf = FPDF(orientation='P', unit='mm', format='A4')
     pdf.add_page()
 
@@ -15,7 +15,7 @@ def createPDF(subjectId,studentName,studentId,answerlist):
 
     #create qr code
     qr = QRCode()
-    qr.add_data(subjectId+';'+studentName+';'+studentId+';'+answerlist) # set qr data
+    qr.add_data(subjectId+';'+studentName+';'+studentId+';'+answerlist+';'+date) # set qr data
     img = qr.make_image() # create img
     img.save('qrcode.png') # save it
 
