@@ -60,7 +60,7 @@ def createPDF(subjectId,studentName,studentId,answerlist):
     pdf.text(95, 90, txt="Marks: ")
 
     #create name subject
-    textList = ["Name:", "Student Id:", "Subject:", "Course:"]
+    textList = ["Name:", "Student Id:", "Subject:", "Semester:", "Course:"]
     pdf.set_line_width(0.5)
     for i in range(4):
         y = 11
