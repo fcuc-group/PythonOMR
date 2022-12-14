@@ -31,9 +31,15 @@ def upload_image():
     studentName = studentDetails[1]
     studentId = studentDetails[2]
     answerList = studentDetails[3].split(',')
+    date = "2022-01"
+    if len(studentDetails) == 5:
+        date = studentDetails[4]
+
     #for lop to convert string to int
     for i in range(len(answerList)):
         answerList[i] = int(answerList[i])
+
+
 
     #check subjectId is ""
 
@@ -63,14 +69,15 @@ def upload_image():
             "studentName":studentName if studentName == "" else student['studentName'],
             "studentId": studentId if studentId == "" else student['studentId'],
             "subject":subjectId if subjectId == "" else student['studentSubject'],
-            "course":student['studentCourse']}
+            "course":student['studentCourse'],
+            "date":date}
 
 
 @app.route('/answerSheet', methods=['POST'])
 def create_answerSheet():
     print(request.json)
     data = request.json
-    path = answerSheet.createPDF(data['subjectId'], data['studentName'], data['studentId'], data['answerList'])
+    path = answerSheet.createPDF(data['subjectId'], data['studentName'], data['studentId'], data['answerList'],data['date'])
     return path
 
 
